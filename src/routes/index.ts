@@ -93,7 +93,7 @@ router.delete('/user/:id', async (req: Request, res: Response, next: NextFunctio
     const findUser: IUser | null = await User.findById(req.params.id);
     if (!findUser) throw new Error('User tidak ditemukan');
 
-    const user = await User.findByIdAndDelete(req.params.id);
+    await User.findByIdAndDelete(req.params.id);
     res.status(204).end();
   } catch (e) {
     next(e);
